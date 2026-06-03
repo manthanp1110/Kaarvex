@@ -149,7 +149,8 @@ const Chatbot = () => {
           boxShadow: '0 8px 32px rgba(0, 240, 255, 0.3)',
           zIndex: 999,
           transition: 'transform 0.3s ease',
-          transform: isOpen ? 'scale(0.9)' : 'scale(1)'
+          transform: isOpen ? 'scale(0.9)' : 'scale(1)',
+          overflow: 'hidden'
         }}
       >
         {isOpen ? (
@@ -157,9 +158,7 @@ const Chatbot = () => {
             <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         ) : (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
+          <img src="/logo.jpg" alt="Kaarvex AI" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply' }} />
         )}
       </button>
 
@@ -191,7 +190,10 @@ const Chatbot = () => {
             alignItems: 'center',
             gap: '12px'
           }}>
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cyan)', boxShadow: '0 0 10px var(--cyan)' }}></div>
+            <div style={{ position: 'relative' }}>
+              <img src="/logo.jpg" alt="Kaarvex" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--border-cyan)' }} />
+              <div style={{ position: 'absolute', bottom: 0, right: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cyan)', boxShadow: '0 0 10px var(--cyan)', border: '2px solid #000' }}></div>
+            </div>
             <div>
               <h4 style={{ margin: 0, fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: '#fff' }}>Kaarvex AI</h4>
               <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--cyan)', fontFamily: 'var(--font-mono)' }}>Online & Ready</p>
