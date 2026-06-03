@@ -26,7 +26,7 @@ function App() {
         <CTA />
       </main>
       <Footer />
-      <WhatsAppButton phoneNumber="1234567890" />
+      <WhatsAppButton phoneNumber="917774954725" />
     </>
   );
 }
