@@ -158,7 +158,7 @@ const Chatbot = () => {
             <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         ) : (
-          <img src="/logo.jpg" alt="Kaarvex AI" style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply' }} />
+          <img src="/logo.jpg" alt="Kaarvex AI" style={{ width: '65%', height: '65%', objectFit: 'contain', mixBlendMode: 'multiply' }} />
         )}
       </button>
 
@@ -191,7 +191,7 @@ const Chatbot = () => {
             gap: '12px'
           }}>
             <div style={{ position: 'relative' }}>
-              <img src="/logo.jpg" alt="Kaarvex" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--border-cyan)' }} />
+              <img src="/logo.jpg" alt="Kaarvex" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'contain', background: '#fff', border: '1px solid var(--border-cyan)' }} />
               <div style={{ position: 'absolute', bottom: 0, right: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cyan)', boxShadow: '0 0 10px var(--cyan)', border: '2px solid #000' }}></div>
             </div>
             <div>
