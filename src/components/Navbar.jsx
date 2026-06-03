@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const KaarvexLogoMark = ({ size = 36 }) => (
   <img src="/logo.jpg" alt="Kaarvex Logo" style={{ height: size * 1.5, width: 'auto', mixBlendMode: 'multiply' }} />
@@ -6,6 +7,8 @@ export const KaarvexLogoMark = ({ size = 36 }) => (
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
@@ -13,39 +16,63 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    if (path.startsWith('/#')) {
+      const id = path.substring(2);
+      if (location.pathname === '/') {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate(path);
+      }
+    } else {
+      navigate(path);
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="navbar-inner">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="nav-logo"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
           >
             <KaarvexLogoMark size={34} />
-          </a>
+          </Link>
 
           <ul className="nav-links">
-            {[['Services', 'services'], ['Process', 'process'], ['About', 'about'], ['Technology', 'tech']].map(([label, id]) => (
-              <li key={id}>
-                <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
+            {[
+              ['Services', '/#services'], 
+              ['Products', '/#products'],
+              ['Process', '/#process'], 
+              ['Clients', '/clients/dcpems'],
+              ['Technology', '/#tech']
+            ].map(([label, path]) => (
+              <li key={label}>
+                <Link to={path} onClick={(e) => handleNavClick(e, path)}>{label}</Link>
               </li>
             ))}
           </ul>
 
           <div className="nav-cta" style={{ transform: 'translateX(15px)' }}>
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
               className="btn-primary"
-              onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
+              onClick={(e) => handleNavClick(e, '/#contact')}
             >
               <span>Let's Build</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

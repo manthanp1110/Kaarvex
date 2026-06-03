@@ -1,30 +1,37 @@
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import './index.css';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Marquee from './components/Marquee';
-import Services from './components/Services';
-import Process from './components/Process';
-import WhyUs from './components/WhyUs';
-import TechStack from './components/TechStack';
-import CTA from './components/CTA';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import Home from './pages/Home';
+import ClientDcpems from './pages/ClientDcpems';
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.getElementById(location.hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [location]);
+
   return (
     <>
       <CustomCursor />
       <Navbar />
-      <main>
-        <Hero />
-        <Marquee />
-        <Services />
-        <Process />
-        <WhyUs />
-        <TechStack />
-        <CTA />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/clients/dcpems" element={<ClientDcpems />} />
+      </Routes>
       <Footer />
       <WhatsAppButton phoneNumber="917774954725" />
     </>

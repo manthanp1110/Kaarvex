@@ -46,7 +46,7 @@ const CTA = () => {
                 <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 19-7z" />
               </svg>
             </a>
-            <a href="https://calendly.com/kaarvex" className="btn-outline" target="_blank" rel="noopener noreferrer">
+            <a href="tel:7774954725" className="btn-outline">
               Book a Free Call
             </a>
           </div>
