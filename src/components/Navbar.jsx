@@ -35,7 +35,7 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="nav-cta">
+          <div className="nav-cta" style={{ transform: 'translateX(15px)' }}>
             <a
               href="#contact"
               className="btn-primary"
