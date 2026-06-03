@@ -9,6 +9,7 @@ import WhyUs from './components/WhyUs';
 import TechStack from './components/TechStack';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <CTA />
       </main>
       <Footer />
+      <WhatsAppButton phoneNumber="1234567890" />
     </>
   );
 }
