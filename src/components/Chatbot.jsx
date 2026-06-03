@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabase';
 import { v4 as uuidv4 } from 'uuid';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import '../chatbot-responsive.css';
 
 const SYSTEM_PROMPT = `You are the official Kaarvex AI Assistant. 
 Kaarvex is a premium digital agency specializing in Web Applications, Mobile Apps, AI Models, and Enterprise Resource Planning (ERP) systems. 
@@ -132,11 +133,12 @@ const Chatbot = () => {
     <>
       {/* Chat Toggle Button */}
       <button 
+        className="chatbot-toggle-btn"
         onClick={() => setIsOpen(!isOpen)}
         style={{
           position: 'fixed',
           bottom: '30px',
-          right: '100px', // Next to WhatsApp button
+          right: '100px', // Next to WhatsApp button on desktop
           width: '60px',
           height: '60px',
           borderRadius: '50%',
@@ -164,7 +166,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div style={{
+        <div className="chatbot-window" style={{
           position: 'fixed',
           bottom: '110px',
           right: '30px',
