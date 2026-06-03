@@ -10,31 +10,53 @@ Notable clients: DCPEMS (A comprehensive School Website & App ERP system).
 Your goal: Answer client questions concisely, professionally, and enthusiastically. Recommend them to "Book a Free Call" if they want to start a project. Keep answers under 3-4 sentences.`;
 
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [sessionId, setSessionId] = useState('');
-  const messagesEndRef = useRef(null);
-
   const isConfigured = import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_GEMINI_API_KEY;
 
-  useEffect(() => {
-    // Initialize or retrieve Session ID
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState(() => {
+    return isConfigured 
+      ? [] 
+      : [{ role: 'assistant', content: 'Hello! I am the Kaarvex AI. (API keys missing - please configure them in .env)' }];
+  });
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => {
     let currentSessionId = localStorage.getItem('kaarvex_chat_session');
     if (!currentSessionId) {
       currentSessionId = uuidv4();
       localStorage.setItem('kaarvex_chat_session', currentSessionId);
     }
-    setSessionId(currentSessionId);
+    return currentSessionId;
+  });
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    const fetchMessages = async (sid) => {
+      try {
+        const { data, error } = await supabase
+          .from('chat_messages')
+          .select('*')
+          .eq('session_id', sid)
+          .order('created_at', { ascending: true });
+          
+        if (error && error.code === '42P01') {
+          // Table doesn't exist yet, just ignore and start fresh
+          console.warn("Table 'chat_messages' does not exist yet.");
+        } else if (data && data.length > 0) {
+          setMessages(data);
+        } else {
+          setMessages([{ role: 'assistant', content: 'Welcome to Kaarvex! How can I help you build something extraordinary today?' }]);
+        }
+      } catch (err) {
+        console.error("Error fetching messages:", err);
+      }
+    };
 
     // Fetch previous messages if configured
     if (isConfigured && supabase) {
-      fetchMessages(currentSessionId);
-    } else {
-      setMessages([{ role: 'assistant', content: 'Hello! I am the Kaarvex AI. (API keys missing - please configure them in .env)' }]);
+      fetchMessages(sessionId);
     }
-  }, []);
+  }, [isConfigured, sessionId]);
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -42,27 +64,6 @@ const Chatbot = () => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen]);
-
-  const fetchMessages = async (sid) => {
-    try {
-      const { data, error } = await supabase
-        .from('chat_messages')
-        .select('*')
-        .eq('session_id', sid)
-        .order('created_at', { ascending: true });
-        
-      if (error && error.code === '42P01') {
-        // Table doesn't exist yet, just ignore and start fresh
-        console.warn("Table 'chat_messages' does not exist yet.");
-      } else if (data && data.length > 0) {
-        setMessages(data);
-      } else {
-        setMessages([{ role: 'assistant', content: 'Welcome to Kaarvex! How can I help you build something extraordinary today?' }]);
-      }
-    } catch (err) {
-      console.error("Error fetching messages:", err);
-    }
-  };
 
   const handleSend = async (e) => {
     e.preventDefault();
