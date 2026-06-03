@@ -73,7 +73,7 @@ const ClientDcpems = () => {
         </div>
 
         {/* Overview Section */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', marginBottom: '100px', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: '64px', marginBottom: '100px', alignItems: 'center' }}>
           <div>
             <div className="section-label">Overview</div>
             <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', fontWeight: 800, marginBottom: '24px', letterSpacing: '-0.02em' }}>Transforming School Administration</h2>
@@ -90,7 +90,7 @@ const ClientDcpems = () => {
             borderRadius: '4px', 
             padding: '40px',
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
             gap: '32px'
           }}>
             {[
@@ -111,7 +111,7 @@ const ClientDcpems = () => {
         <div style={{ marginBottom: '120px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>Capabilities</div>
           <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 800, textAlign: 'center', marginBottom: '64px', letterSpacing: '-0.03em' }}>Key Features Developed</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1px', background: 'var(--border)', border: '1px solid var(--border)', borderRadius: '4px', overflow: 'hidden' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1px', background: 'var(--border)', border: '1px solid var(--border)', borderRadius: '4px', overflow: 'hidden' }}>
             {[
               {
                 title: 'Integrated ERP',
