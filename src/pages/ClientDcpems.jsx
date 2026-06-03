@@ -73,8 +73,8 @@ const ClientDcpems = () => {
         </div>
 
         {/* Overview Section */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: '64px', marginBottom: '100px', alignItems: 'center' }}>
-          <div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '64px', marginBottom: '100px', alignItems: 'center' }}>
+          <div style={{ flex: '1 1 300px' }}>
             <div className="section-label">Overview</div>
             <h2 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', fontWeight: 800, marginBottom: '24px', letterSpacing: '-0.02em' }}>Transforming School Administration</h2>
             <p style={{ marginBottom: '24px', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
@@ -88,10 +88,11 @@ const ClientDcpems = () => {
             background: 'var(--bg-1)', 
             border: '1px solid var(--border)', 
             borderRadius: '4px', 
-            padding: '40px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: '32px'
+            padding: '40px 20px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '24px',
+            flex: '1 1 300px'
           }}>
             {[
               { label: 'Client', value: 'DCPEMS' },
@@ -99,7 +100,7 @@ const ClientDcpems = () => {
               { label: 'Platform', value: 'Web & Mobile' },
               { label: 'Timeline', value: '12 Weeks' }
             ].map((stat, i) => (
-              <div key={i}>
+              <div key={i} style={{ flex: '1 1 120px' }}>
                 <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '8px' }}>{stat.label}</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: '800', fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>{stat.value}</div>
               </div>
@@ -111,7 +112,7 @@ const ClientDcpems = () => {
         <div style={{ marginBottom: '120px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>Capabilities</div>
           <h2 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 800, textAlign: 'center', marginBottom: '64px', letterSpacing: '-0.03em' }}>Key Features Developed</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1px', background: 'var(--border)', border: '1px solid var(--border)', borderRadius: '4px', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1px', background: 'var(--border)', border: '1px solid var(--border)', borderRadius: '4px', overflow: 'hidden' }}>
             {[
               {
                 title: 'Integrated ERP',
@@ -141,7 +142,7 @@ const ClientDcpems = () => {
                 )
               }
             ].map((feature, i) => (
-              <div key={i} className="service-card" style={{ borderRadius: 0, border: 'none' }}>
+              <div key={i} className="service-card" style={{ flex: '1 1 280px', borderRadius: 0, border: 'none' }}>
                 <div className="service-icon-wrap" style={{ width: '48px', height: '48px', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div className="service-icon">{feature.icon}</div>
                 </div>

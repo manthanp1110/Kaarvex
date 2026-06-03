@@ -120,7 +120,7 @@ const Products = () => {
         </div>
 
         {/* Grid */}
-        <div className="services-grid fade-up" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))' }}>
+        <div className="services-grid fade-up">
           {filteredProducts.map(product => (
             <div key={product.id} className="service-card" style={{ padding: '0', display: 'flex', flexDirection: 'column' }}>
               <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
