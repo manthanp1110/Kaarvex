@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" fill="none">
+  <!-- Center leaf / petal - tall pointed oval -->
+  <path d="M200 18 C200 18 178 50 178 82 C178 108 188 124 200 124 C212 124 222 108 222 82 C222 50 200 18 200 18Z" fill="currentColor"/>
+  <!-- Left petal - crescent/wing shape curving left -->
+  <path d="M178 90 C178 90 160 84 142 78 C124 72 110 78 106 92 C102 108 112 122 132 122 C152 122 168 112 172 100 C176 90 178 90 178 90Z" fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="round"/>
+  <!-- Right petal - mirror -->
+  <path d="M222 90 C222 90 240 84 258 78 C276 72 290 78 294 92 C298 108 288 122 268 122 C248 122 232 112 228 100 C224 90 222 90 222 90Z" fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="round"/>
+  <!-- Stem connector at base -->
+  <path d="M192 122 L196 134 L200 136 L204 134 L208 122" fill="currentColor"/>
+
+  <!-- KAARVEX wordmark -->
+  <text x="200" y="185"
+    font-family="'Space Grotesk', 'Inter', sans-serif"
+    font-size="28"
+    font-weight="500"
+    letter-spacing="14"
+    text-anchor="middle"
+    fill="currentColor">K Λ Λ R V E X</text>
+</svg>
