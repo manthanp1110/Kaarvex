@@ -5,6 +5,7 @@ import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import ClientDcpems from './pages/ClientDcpems';
 
@@ -34,6 +35,7 @@ function App() {
       </Routes>
       <Footer />
       <WhatsAppButton phoneNumber="917774954725" />
+      <Chatbot />
     </>
   );
 }
