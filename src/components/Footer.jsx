@@ -52,7 +52,7 @@ const Footer = () => (
         <div>
           <div className="footer-col-title">Contact</div>
           <ul className="footer-links">
-            <li><a href="mailto:hello@kaarvex.com">hello@kaarvex.com</a></li>
+            <li><a href="mailto:kaarvex@gmail.com">kaarvex@gmail.com</a></li>
             <li><a href="tel:7774954725">Book a Call</a></li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Service</a></li>
