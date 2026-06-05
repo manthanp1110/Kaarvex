@@ -69,6 +69,14 @@ const ClientDcpems = () => {
               <span className="badge" style={{ background: 'var(--bg-0)', padding: '8px 16px', borderRadius: '2px', border: '1px solid var(--border)', fontSize: '0.8rem', fontWeight: 600, fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>Mobile App</span>
               <span className="badge" style={{ background: 'var(--bg-0)', padding: '8px 16px', borderRadius: '2px', border: '1px solid var(--border)', fontSize: '0.8rem', fontWeight: 600, fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>ERP System</span>
             </div>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '32px', flexWrap: 'wrap' }}>
+              <a href="https://dcpems.com" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', background: 'var(--cyan)', color: '#000', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
+                DCPEMS Website
+              </a>
+              <a href="https://dcpems.com" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', border: '1px solid var(--cyan)', color: 'var(--cyan)', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
+                DCPEMS Web App
+              </a>
+            </div>
           </div>
         </div>
 
