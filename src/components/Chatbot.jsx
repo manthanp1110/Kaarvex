@@ -252,7 +252,7 @@ const Chatbot = () => {
                 border: '1px solid var(--border)',
                 borderRadius: '8px',
                 padding: '12px 16px',
-                color: '#fff',
+                color: '#000',
                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.9rem',
                 outline: 'none'
