@@ -1,24 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { supabase } from '../lib/supabase';
 import { v4 as uuidv4 } from 'uuid';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import '../chatbot-responsive.css';
 
-const SYSTEM_PROMPT = `You are the official Kaarvex AI Assistant. 
-Kaarvex is a premium digital agency specializing in Web Applications, Mobile Apps, AI Models, and Enterprise Resource Planning (ERP) systems. 
-Our aesthetic is high-end, dark, and glassmorphic. We build things that are fast, dynamic, and beautiful. 
-Notable clients: DCPEMS (A comprehensive School Website & App ERP system).
-Your goal: Answer client questions concisely, professionally, and enthusiastically. Recommend them to "Book a Free Call" if they want to start a project. Keep answers under 3-4 sentences.`;
-
 const Chatbot = () => {
-  const isConfigured = import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_GEMINI_API_KEY;
+
+  const isSupabaseConfigured = !!import.meta.env.VITE_SUPABASE_URL;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState(() => {
-    return isConfigured 
-      ? [] 
-      : [{ role: 'assistant', content: 'Hello! I am the Kaarvex AI. (API keys missing - please configure them in .env)' }];
-  });
+  const [messages, setMessages] = useState([{ role: 'assistant', content: 'Welcome to Kaarvex! How can I help you build something extraordinary today?' }]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId] = useState(() => {
@@ -54,10 +44,10 @@ const Chatbot = () => {
     };
 
     // Fetch previous messages if configured
-    if (isConfigured && supabase) {
+    if (isSupabaseConfigured && supabase) {
       fetchMessages(sessionId);
     }
-  }, [isConfigured, sessionId]);
+  }, [isSupabaseConfigured, sessionId]);
 
   useEffect(() => {
     // Scroll to bottom when messages change
@@ -71,21 +61,14 @@ const Chatbot = () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage = { role: 'user', content: input.trim() };
+    const currentInput = input.trim().toLowerCase();
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
 
-    if (!isConfigured) {
-      setTimeout(() => {
-        setMessages(prev => [...prev, { role: 'assistant', content: 'Demo mode: Please add VITE_GEMINI_API_KEY and VITE_SUPABASE_URL to your .env file to enable real AI responses.' }]);
-        setIsLoading(false);
-      }, 1000);
-      return;
-    }
-
     try {
       // 1. Save User Message to Supabase
-      if (supabase) {
+      if (isSupabaseConfigured && supabase) {
         await supabase.from('chat_messages').insert([{
           session_id: sessionId,
           role: 'user',
@@ -93,38 +76,52 @@ const Chatbot = () => {
         }]);
       }
 
-      // 2. Call Gemini API
-      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-      const model = genAI.getGenerativeModel({ 
-        model: 'gemini-1.5-flash',
-        systemInstruction: SYSTEM_PROMPT
-      });
+      // 2. Generate Rule-based Response
+      setTimeout(async () => {
+        let botResponseText = "I'm the Kaarvex AI assistant. I can help you with information about our Web Applications, Mobile Apps, AI Models, ERP systems, or our portfolio. How can I help you today?";
+        
+        if (currentInput.includes('hello') || currentInput.includes('hi ') || currentInput === 'hi' || currentInput === 'hey') {
+          botResponseText = "Hello! Welcome to Kaarvex. How can I help you build something extraordinary today?";
+        } else if (currentInput.includes('services') || currentInput.includes('what do you do') || currentInput.includes('offer')) {
+          botResponseText = "We specialize in Web Applications, Mobile Apps, AI Models, and Enterprise Resource Planning (ERP) systems. Would you like to know more about any specific service?";
+        } else if (currentInput.includes('web') || currentInput.includes('website')) {
+          botResponseText = "We build fast, dynamic, and beautiful web applications using modern technologies like React, Next.js, and specialized UI frameworks. We focus on high-end, dark, and glassmorphic aesthetics.";
+        } else if (currentInput.includes('app') || currentInput.includes('mobile')) {
+          botResponseText = "We develop cross-platform and native mobile applications that provide seamless user experiences and high performance.";
+        } else if (currentInput.includes('ai') || currentInput.includes('artificial intelligence') || currentInput.includes('model')) {
+          botResponseText = "Our AI solutions include custom model training, LLM integration, and intelligent automation to streamline your business operations.";
+        } else if (currentInput.includes('erp') || currentInput.includes('enterprise')) {
+          botResponseText = "We build comprehensive ERP systems tailored to your business needs. A notable example is DCPEMS, our School Website & App ERP system.";
+        } else if (currentInput.includes('portfolio') || currentInput.includes('client') || currentInput.includes('work') || currentInput.includes('dcpems')) {
+          botResponseText = "Our notable clients include DCPEMS, for whom we built a comprehensive School Website & App ERP system. We pride ourselves on delivering premium digital experiences.";
+        } else if (currentInput.includes('contact') || currentInput.includes('book') || currentInput.includes('call') || currentInput.includes('hire') || currentInput.includes('project')) {
+          botResponseText = "We'd love to discuss your project! Please use the 'Book a Free Call' or 'Contact Us' buttons on our website to get in touch with our team.";
+        } else if (currentInput.includes('price') || currentInput.includes('cost') || currentInput.includes('quote')) {
+          botResponseText = "Our pricing is tailored to the specific requirements of each project. Please book a free call with us to discuss your needs and get a custom quote.";
+        } else if (currentInput.includes('who are you') || currentInput.includes('what is kaarvex')) {
+          botResponseText = "Kaarvex is a premium digital agency. We build things that are fast, dynamic, and beautiful, specializing in cutting-edge software solutions.";
+        } else if (currentInput.includes('thank')) {
+          botResponseText = "You're welcome! Let me know if you have any other questions.";
+        } else {
+          botResponseText = "Thanks for your message! For detailed information or to discuss a specific project, I recommend checking our services section or clicking 'Book a Free Call' to speak directly with our team.";
+        }
 
-      // Format history for Gemini
-      const history = messages.filter(m => m.role === 'user' || m.role === 'assistant').map(m => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.content }]
-      }));
+        // 3. Save Assistant Message to Supabase
+        if (isSupabaseConfigured && supabase) {
+          await supabase.from('chat_messages').insert([{
+            session_id: sessionId,
+            role: 'assistant',
+            content: botResponseText
+          }]);
+        }
 
-      const chat = model.startChat({ history });
-      const result = await chat.sendMessage(userMessage.content);
-      const botResponseText = result.response.text();
-
-      // 3. Save Assistant Message to Supabase
-      if (supabase) {
-        await supabase.from('chat_messages').insert([{
-          session_id: sessionId,
-          role: 'assistant',
-          content: botResponseText
-        }]);
-      }
-
-      setMessages(prev => [...prev, { role: 'assistant', content: botResponseText }]);
+        setMessages(prev => [...prev, { role: 'assistant', content: botResponseText }]);
+        setIsLoading(false);
+      }, 800); // Simulate network delay for realism
 
     } catch (error) {
       console.error("Chat Error:", error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again later.' }]);
-    } finally {
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error processing your message.' }]);
       setIsLoading(false);
     }
   };
