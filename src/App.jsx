@@ -8,7 +8,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import ClientDcpems from './pages/ClientDcpems';
-
+import ClientStyrka from './pages/ClientStyrka';
 import Clients from './pages/Clients';
 
 function App() {
@@ -35,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/clients/dcpems" element={<ClientDcpems />} />
+        <Route path="/clients/styrka" element={<ClientStyrka />} />
       </Routes>
       <Footer />
       <WhatsAppButton phoneNumber="917774954725" />

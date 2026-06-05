@@ -10,6 +10,15 @@ const clientsData = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop', // Temporary placeholder
     tags: ['Web Application', 'Mobile App', 'ERP System'],
     link: '/clients/dcpems'
+  },
+  {
+    id: 2,
+    title: 'Styrka',
+    category: 'Web Apps',
+    description: 'A dynamic web presence and comprehensive ERP portal built for a modern fertilizer company featuring AI chatbots and secure tracking.',
+    image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=600&auto=format&fit=crop', // Temporary placeholder for agriculture/business
+    tags: ['Dynamic Interface', 'AI Chatbot', 'Enterprise ERP'],
+    link: '/clients/styrka'
   }
 ];
 
