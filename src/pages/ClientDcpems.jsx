@@ -62,7 +62,7 @@ const ClientDcpems = () => {
           }}></div>
           
           <div style={{ textAlign: 'center', zIndex: 1 }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', fontFamily: 'var(--font-display)', fontWeight: 800 }}>dcpems.com</h2>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', fontFamily: 'var(--font-display)', fontWeight: 800 }}><a href="https://dcpems.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>dcpems.com</a></h2>
             <p className="p" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Next-Generation Educational Management System</p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '32px', flexWrap: 'wrap' }}>
               <span className="badge" style={{ background: 'var(--bg-0)', padding: '8px 16px', borderRadius: '2px', border: '1px solid var(--border)', fontSize: '0.8rem', fontWeight: 600, fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>Web Application</span>
