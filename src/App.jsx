@@ -9,6 +9,8 @@ import Chatbot from './components/Chatbot';
 import Home from './pages/Home';
 import ClientDcpems from './pages/ClientDcpems';
 
+import Clients from './pages/Clients';
+
 function App() {
   const location = useLocation();
 
@@ -31,6 +33,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/clients" element={<Clients />} />
         <Route path="/clients/dcpems" element={<ClientDcpems />} />
       </Routes>
       <Footer />

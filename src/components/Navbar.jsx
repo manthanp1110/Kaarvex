@@ -53,7 +53,7 @@ const Navbar = () => {
               ['Services', '/#services'], 
               ['Products', '/#products'],
               ['Process', '/#process'], 
-              ['Clients', '/clients/dcpems'],
+              ['Clients', '/clients'],
               ['Technology', '/#tech']
             ].map(([label, path]) => (
               <li key={label}>
