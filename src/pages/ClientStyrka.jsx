@@ -63,7 +63,7 @@ const ClientStyrka = () => {
           
           <div style={{ textAlign: 'center', zIndex: 1 }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', fontFamily: 'var(--font-display)', fontWeight: 800 }}>
-              <a href="https://styrka.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>styrka.vercel.app</a>
+              <a href="https://styrka-six.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>styrka-six.vercel.app</a>
             </h2>
             <p className="p" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Next-Generation Fertilizer Management Platform</p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '32px', flexWrap: 'wrap' }}>
@@ -72,10 +72,10 @@ const ClientStyrka = () => {
               <span className="badge" style={{ background: 'var(--bg-0)', padding: '8px 16px', borderRadius: '2px', border: '1px solid var(--border)', fontSize: '0.8rem', fontWeight: 600, fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>Enterprise ERP</span>
             </div>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '32px', flexWrap: 'wrap' }}>
-              <a href="https://styrka.vercel.app" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', background: 'var(--cyan)', color: '#000', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
+              <a href="https://styrka-six.vercel.app" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', background: 'var(--cyan)', color: '#000', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
                 Visit Styrka
               </a>
-              <a href="https://styrka.vercel.app" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', border: '1px solid var(--cyan)', color: 'var(--cyan)', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
+              <a href="https://styrka-six.vercel.app" target="_blank" rel="noopener noreferrer" style={{ padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', border: '1px solid var(--cyan)', color: 'var(--cyan)', fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'all 0.3s ease' }}>
                 Open Web App
               </a>
             </div>
