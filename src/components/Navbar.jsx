@@ -50,11 +50,11 @@ const Navbar = () => {
 
           <ul className="nav-links">
             {[
-              ['Services', '/#services'], 
-              ['Products', '/#products'],
-              ['Process', '/#process'], 
+              ['Services', '/services'], 
+              ['Products', '/products'],
+              ['Process', '/process'], 
               ['Clients', '/clients'],
-              ['Technology', '/#tech']
+              ['Technology', '/technology']
             ].map(([label, path]) => (
               <li key={label}>
                 <Link to={path} onClick={(e) => handleNavClick(e, path)}>{label}</Link>
@@ -64,9 +64,9 @@ const Navbar = () => {
 
           <div className="nav-cta" style={{ transform: 'translateX(15px)' }}>
             <Link
-              to="/#contact"
+              to="/contact"
               className="btn-primary"
-              onClick={(e) => handleNavClick(e, '/#contact')}
+              onClick={(e) => handleNavClick(e, '/contact')}
             >
               <span>Let's Build</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

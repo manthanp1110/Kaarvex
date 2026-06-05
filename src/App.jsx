@@ -11,6 +11,12 @@ import ClientDcpems from './pages/ClientDcpems';
 import ClientStyrka from './pages/ClientStyrka';
 import Clients from './pages/Clients';
 
+import ServicesPage from './pages/ServicesPage';
+import ProductsPage from './pages/ProductsPage';
+import ProcessPage from './pages/ProcessPage';
+import TechnologyPage from './pages/TechnologyPage';
+import ContactPage from './pages/ContactPage';
+
 function App() {
   const location = useLocation();
 
@@ -33,6 +39,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/process" element={<ProcessPage />} />
+        <Route path="/technology" element={<TechnologyPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/clients/dcpems" element={<ClientDcpems />} />
         <Route path="/clients/styrka" element={<ClientStyrka />} />
